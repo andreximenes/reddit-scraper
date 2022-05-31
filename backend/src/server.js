@@ -10,7 +10,7 @@ const routes = require('./route/routes')
 const config = require('./config/serverConfig')
 const database = require("./config/db");
 
-
+aplicationContext = process.env.APPLICATION_CONTEXT
 
 const app  = express();
 app.use(bodyParser.json())
@@ -19,10 +19,10 @@ app.use('/', routes)
 
 
 // static images
-app.use('/api/v1/public/images', express.static(path.join(__dirname, '/images')))
+app.use(`${aplicationContext}/public/images`, express.static(path.join(__dirname, '/images')))
 
 //swagger
-app.use('/api/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+app.use(`${aplicationContext}/api-docs`, swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 app.use(config.createErroNotFound)
 app.use(config.errorHandler);
