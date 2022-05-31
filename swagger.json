@@ -1,0 +1,57 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Reddit Scraper",
+    "description": "service for scrape the latest posts from \"/r/photo\" subreddit ",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:8000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Posts",
+      "description": "Used for scrape posts from reddit and show all posts scraped"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/posts/all": {
+      "get": {
+        "tags": ["Posts"],
+        "summary": "Get all posts scraped",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/posts/scrape": {
+      "get": {
+        "tags": ["Posts"],
+        "summary": "start scrape process. This process may take a few minutes",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Total number of posts to scrape",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}
