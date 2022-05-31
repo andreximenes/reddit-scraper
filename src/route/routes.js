@@ -8,7 +8,8 @@ route.get('/server/info', (req, res) => res.json({
     status: 'running...',
     timestamp: Date.now()
 }))
-route.get('/posts/all', postController.getAll)
-route.get('/posts/scrape', postController.newScrape)
+route.get('/api/v1/posts/all', postController.getAll)
+route.get('/api/v1/posts/scrape', postController.newScrape)
+route.get('/', (req, res) => res.redirect('/api/v1/api-docs'))
 
 module.exports = route

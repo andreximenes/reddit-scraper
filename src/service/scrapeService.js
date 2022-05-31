@@ -3,7 +3,7 @@ const imgDownloadService = require('./imgDownloadService')
 const imageService = require("./imgDownloadService");
 const oauthUrl = 'https://www.reddit.com/api/v1/access_token'
 const subredditUrl = 'https://oauth.reddit.com/r/photo'
-const postSearchLimit = 25
+const defaultLimit = 25
 
 async function getOAuthToken() {
     return axios({
@@ -29,8 +29,8 @@ async function getOAuthToken() {
 
 
 
-async function start() {
-    const result = await fetchPhotoPosts()
+async function start(customLimit) {
+    const result = await fetchPhotoPosts(customLimit)
     const posts = []
 
     for(const item of result) {
@@ -41,10 +41,10 @@ async function start() {
     return posts
 }
 
-async function fetchPhotoPosts() {
+async function fetchPhotoPosts(customLimit) {
     const token = await getOAuthToken();
 
-    const response = await axios.get(`${subredditUrl}?limit=${postSearchLimit}`,
+    const response = await axios.get(`${subredditUrl}?limit=${customLimit ? customLimit : defaultLimit}`,
         { headers: {"Authorization" : `Bearer ${await getOAuthToken()}`} })
         .then(res => {
             return res.data.data.children

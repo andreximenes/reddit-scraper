@@ -1,34 +1,31 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
+const swaggerUi = require('swagger-ui-express')
+const swaggerDocument = require('../swagger.json')
 
 require('dotenv').config();
 
 const routes = require('./route/routes')
-const config = require('./config/server-configuration')
+const config = require('./config/serverConfig')
+const database = require("./config/db");
 
-
-// load and sync database (working as in memory database)
-;(async () => {
-    const database = require('./config/db');
-    try {
-        const result = await database.sync({ force: true });
-        console.log(result);
-    } catch (error) {
-        console.log(error);
-    }
-})();
 
 
 const app  = express();
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/', routes)
-app.use(config.errorHandler);
+
 
 // static images
-app.use('/public/images', express.static(path.join(__dirname, '/images')))
+app.use('/api/v1/public/images', express.static(path.join(__dirname, '/images')))
 
+//swagger
+app.use('/api/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+
+app.use(config.createErroNotFound)
+app.use(config.errorHandler);
 
 // application Start
 app.listen(process.env.PORT, () => {
@@ -36,5 +33,15 @@ app.listen(process.env.PORT, () => {
     console.log('Press CTRL-C to stop\n')
 
 });
+
+// load and sync database (working as in memory database)
+;(async () => {
+    const database = require('./config/db');
+    try {
+        const result = await database.sync();
+    } catch (error) {
+        console.log(error);
+    }
+})();
 
 module.exports = app;
