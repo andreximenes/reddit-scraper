@@ -1,37 +1,35 @@
 import React from 'react';
-import { useForm } from "react-hook-form";
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const ScrapeForm = () => {
-    const { handleSubmit, formState } = useForm();
-    // const { isSubmitting } = formState;
-    const [ limit, setLimit ]  = useState([])
+    const [ limit, setLimit ]  = useState('25')
     const [dataScrape, setDataScrape] = useState([]);
     const [isSubmitting, setSubmitting] = useState(false);
     const [data, setData] = useState([]);
 
-    useEffect(() => {
-        axios
-        .get('http://localhost:8000/api/v1/posts/all')
-        .then(({ data }) => {
-            setData(data.data);
-        })
-        .catch(err => {
-            console.log('ERROR', err);
-        });
-    }, []);
-
-    const scrape = (e) => {
-        console.log(e)
+  
+    const scrape = (limit) => {
         setSubmitting(true)
 
+        console.log('Scraping')    
         axios
-        .get('http://localhost:8000/api/v1/posts/scrape')
+        .get(`http://localhost:8000/api/v1/posts/scrape?limit=${limit}`)
         .then(({ data }) => {
             console.log(data)
             setDataScrape(data.data);
             setSubmitting(false)
+        })
+        .catch(err => {
+            console.log('ERROR', err);
+        });
+        
+
+        axios
+        .get('http://localhost:8000/api/v1/posts/all')
+        .then(({ data }) => {
+            console.log('loading photos...')            
+            setData(data.data);
         })
         .catch(err => {
             console.log('ERROR', err);
@@ -41,22 +39,24 @@ const ScrapeForm = () => {
     }
 
     function onSubmit(e) {
-        console.log("limit", e.limit)
-        scrape(e)
+        e.preventDefault()
+        console.log("limit", limit)
+        scrape(limit)
        
     }
 
     return (
         <div className="flex items-center border-b border-gray-800-500 py-2">
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={onSubmit}>
                 <input 
-                    onChange={(e) => setLimit(e.target.value)}
+                    onChange={e => setLimit(e.target.value)}
                     className="appearance-none bg-transparent border-none w-15 text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" 
                     type="number" 
                     id="limit"
+                    name="limit"
                     value={limit}
                     placeholder="25" 
-                    aria-label="limit" />
+                     />
                 <button disabled={isSubmitting} className="flex-shrink-0 w-40 bg-teal-900 hover:bg-teal-600 border-teal-800 hover:border-teal-600 text-xl border-4 text-white py-1 px-2 rounded">
                 <svg 
                     role="status" 

@@ -38,7 +38,6 @@ app.listen(process.env.PORT, () => {
 
 // load and sync database (working as in memory database)
 ;(async () => {
-    const database = require('./config/db');
     try {
         const result = await database.sync();
     } catch (error) {
