@@ -13,6 +13,10 @@ const downloadFile = async (imgUrl, imgName) => {
         responseType: 'stream',
     });
 
+    if (!fs.existsSync(path.join(path.resolve('.'), imgFolder))) {
+        fs.mkdirSync(path.join(path.resolve('.'), imgFolder))
+    }
+
     const fp = path.join(path.resolve('.'), imgFolder, imgName);
 
     const writer = fs.createWriteStream(fp, { autoClose: true });
@@ -25,5 +29,7 @@ const downloadFile = async (imgUrl, imgName) => {
     })
 }
 
+downloadFile('https://images.unsplash.com/photo-1519996529931-28324d5a630e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+  , 'teste.jpeg')
 
 module.exports = { downloadFile };

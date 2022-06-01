@@ -9,7 +9,7 @@ async function newScrape(req, res) {
     const customLimit = req.query.limit
 
     let result = await postService.scrapeAndSave(customLimit);
-    res.json({ message: `process completed successfully. Total new posts added: ${result}`, total: result} )
+    res.json(result)
 }
 
 module.exports = {

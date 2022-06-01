@@ -11,7 +11,6 @@ async function getAll() {
     for (let post of posts) {
         post.setDataValue('images', await getPostImagesByPostId(post.id))
     }
-
     return posts
 }
 
@@ -39,12 +38,20 @@ async function postAlreadyExists(post) {
 }
 
 
+async function createScrapeResultResponse(count) {
+    posts = await getAll();
+    return {
+        message: `process completed successfully. Total new posts added: ${count}`,
+        totalOnDatabase: posts.length,
+        posts: posts
+    }
+}
+
 async function scrapeAndSave(customLimit) {
     const items = await scrapeService.start(customLimit)
     let count = 0;
     let post;
     for (const item of items) {
-
         if (await postAlreadyExists(item)) {
             continue
         }
@@ -58,6 +65,7 @@ async function scrapeAndSave(customLimit) {
         })
 
         for (const image of item.images) {
+            await imageService.downloadFile(image.url, image.name)
             await PostImage.create({
                 postId: post.id,
                 name: image.name,
@@ -66,14 +74,12 @@ async function scrapeAndSave(customLimit) {
                 console.error(err)
                 throw err
             })
-
-            imageService.downloadFile(image.url, image.name)
         }
 
         count++
     }
 
-    return count;
+    return createScrapeResultResponse(count);
 }
 
 
