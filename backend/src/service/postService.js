@@ -67,7 +67,7 @@ async function scrapeAndSave(customLimit) {
                 throw err
             })
 
-            imageService.download(image.url, image.name)
+            imageService.downloadFile(image.url, image.name)
         }
 
         count++

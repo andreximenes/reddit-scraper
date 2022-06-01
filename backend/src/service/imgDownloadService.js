@@ -1,15 +1,29 @@
 const path = require('path')
+const fs = require('fs');
+const axios = require('axios').default;
 const { exec } = require('child_process')
 const imgFolder = 'src/images'
 
 
-function download(imgUrl, imgName) {
-    const imagePath = path.join(path.resolve('.'), imgFolder, imgName)
-    exec(`wget '${imgUrl}' -O ${imagePath}`, (err, stdout, stderr) => {
-        if (err) {
-            console.error(err)
-        }
+
+const downloadFile = async (imgUrl, imgName) => {
+    const res = await axios({
+        method: 'GET',
+        url: imgUrl,
+        responseType: 'stream',
     });
+
+    const fp = path.join(path.resolve('.'), imgFolder, imgName);
+
+    const writer = fs.createWriteStream(fp, { autoClose: true });
+
+    res.data.pipe(writer);
+
+    return new Promise((resolve, reject) => {
+        writer.on('finish', resolve);
+        writer.on('error', reject);
+    })
 }
 
-module.exports = { download };
+
+module.exports = { downloadFile };

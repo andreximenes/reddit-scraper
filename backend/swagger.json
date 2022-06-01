@@ -35,7 +35,7 @@
     "/posts/scrape": {
       "get": {
         "tags": ["Posts"],
-        "summary": "start scrape process. This process may take a few minutes",
+        "summary": "starts the process to fetch the 25 (by default) most recent posts on the subreddit. If the limit parameter is passed with some other value, it will be used as a post search limit",
         "parameters": [
           {
             "name": "limit",
