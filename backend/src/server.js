@@ -36,7 +36,7 @@ app.use(config.errorHandler);
 
 // application Start
 app.listen(process.env.PORT, () => {
-    console.log(('App is running at http://localhost:%d in %s mode'), process.env.PORT, app.get('env'))
+    console.log(('App is running at %s:%d in %s mode'), app.address, process.env.PORT, app.get('env'))
     console.log('Press CTRL-C to stop\n')
 
 });
