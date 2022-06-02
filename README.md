@@ -4,19 +4,21 @@ This project use the Reddit API to scrape the most recent posts from subreddit: 
 
 
 
+
 ### The service was divided in two projects:
 
 #### requirements for both
-
- - NodeJS 14+
- - Npm 6.14+	
+ - Node.JS v14 or higher
+ - Npm v6.14 or higher
 
 
 
 ## Backend 
-The backend was built using nodeJS, express and sqlite3.
+The backend was built using nodeJS, express and sequelize ORM to use sqlite3.
 
-### Start project Instrunctions:
+> To make testing and using the application easier, I built the frontent project and put it to be served by the backend server. That way you won't need to start the two services (frontnd and backend) to be able to test. Just follow the backend instructions and open the url shown in the terminal (http://localhost:8000)
+
+### Start project Instructions:
 
 Working directory
 
@@ -32,14 +34,18 @@ Working directory
 
 3 - Access the API documentation  (sawagger) 
 
-    http://localhost:8000/ or http://localhost:8000/api/v1/api-docs/
+| url | context | description
+|--|--|--| 
+| http://localhost:8000/app		| app | web app  build in react running into backend server| 
+| http://localhost:8000/api/ 	| api | api documentation using swagger | 
 
 
+ 
+ 
 **Important**
 > *For security reasons we shouldn't commit the .env file with sensitive data in the github repository, but I had to commit it so that it is possible to run the project as expected, because the Reddit API credentials are in the .env file*
 
 ___
-
 
 ## Frontend
 The frontend was build using ReactJS and Tailwindcss
@@ -61,4 +67,3 @@ Working directory
 3 - Access the web app :
 
     http://localhost:3000
-
