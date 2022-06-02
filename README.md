@@ -22,7 +22,7 @@ The backend was built using nodeJS, express and sequelize ORM to use sqlite3.
 
 Working directory
 
-    reddit-srcrapper/backend/
+    reddit-scraper/backend/
 
 1 -  Install dependencies
 
@@ -53,7 +53,7 @@ The frontend was build using ReactJS and Tailwindcss
 
 Working directory
 
-    reddit-srcrapper/frontend/
+    reddit-scraper/frontend/
 
 1 -  Install dependencies
 
