@@ -6,7 +6,6 @@ import axios from "axios";
 const ScrapeForm = (posts) => {
   const [limit, setLimit] = useState("25");
   const [isSubmitting, setSubmitting] = useState(false);
-  const [data, setData] = useState([]);
 
   const scrape = async () => {
     setSubmitting(true);
@@ -27,6 +26,7 @@ const ScrapeForm = (posts) => {
   function onSubmit(e) {
     e.preventDefault();
     console.log("limit", limit);
+    setLimit(limit)
     scrape(limit);
   }
 

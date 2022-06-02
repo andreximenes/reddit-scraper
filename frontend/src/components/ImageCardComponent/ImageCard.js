@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const ImageCard = ({ post }) => {
     const [selected, setSelected] = useState(0);
