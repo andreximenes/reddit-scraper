@@ -41,7 +41,7 @@ const App = () => {
 
         <div className="flex flex-col  items-center justify-center">
           <p>
-            Click on the button below and it will get the 25 most
+            Click on the button below and it will scrape the 25 most
             recent posts on the subreddit. <span className="underline decoration-orange-500">The scrape process may take a few seconds.</span>
           </p>
           

@@ -35,8 +35,8 @@ app.use(config.createErrorNotFound)
 app.use(config.errorHandler);
 
 // application Start
-app.listen(process.env.PORT, () => {
-    console.log(('App is running at %s:%d in %s mode'), app.address, process.env.PORT, app.get('env'))
+app.listen(process.env.PORT || 8000, () => {
+    console.log(('App is running at %s:%d in %s mode'), process.env.HOST || 'http//localhost', process.env.PORT || 8000, app.get('env'))
     console.log('Press CTRL-C to stop\n')
 
 });

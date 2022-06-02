@@ -78,7 +78,7 @@ async function scrapeAndSave(customLimit) {
             await PostImage.create({
                 postId: post.id,
                 name: image.name,
-                sourceUrl: `http://localhost:${process.env.PORT}${serverConstants.APPLICATION_CONTEXT}/public/images/${image.name}`
+                sourceUrl: `${process.env.HOST ||  'http://localhost'}:${process.env.PORT || '8000'}${serverConstants.APPLICATION_CONTEXT}/public/images/${image.name}`
             }).catch((err) => {
                 console.error(err)
                 throw err
