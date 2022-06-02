@@ -36,7 +36,7 @@ export const ScrollToTop = () => {
         bg-white hover:bg-gray-400 focus:ring-gray-600 inline-flex items-center rounded-full p-3 mr-12 mb-10
         text-gray-600 shadow-sm transition-opacity focus:outline-none focus:ring-2 focus:ring-offset-2`  }
       >
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
         </svg>
       </button>
