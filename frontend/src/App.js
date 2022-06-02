@@ -42,7 +42,7 @@ const App = () => {
         <div className="flex flex-col  items-center justify-center">
           <p>
             Click on the button below and it will get the 25 most
-            recent posts on the subreddit. <span className="underline decoration-orange-500">The scrape process may take a few seconds</span>
+            recent posts on the subreddit. <span className="underline decoration-orange-500">The scrape process may take a few seconds.</span>
           </p>
           
           <ScrapeForm posts={setPosts} setScraping/>
@@ -54,7 +54,7 @@ const App = () => {
         <hr className="my-12" />
 
         <div className={`flex justify-center items-center mb-10  ${data && data.length > 0 ? "hidden" : "visible"}`}>
-          <h2 className="text-4xl font-semibold leading-normal mt-5 mb-5 text-gray-800" id="basic">
+          <h2 className="text-3xl font-semibold leading-normal mt-5 mb-5 text-gray-800" id="basic">
               No content to show here. Click on the start scrape button.
           </h2>
         </div>
