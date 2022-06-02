@@ -1,6 +1,6 @@
 # Welcome to Reddit Scraper!
 
-This project use the Reddit API to scrape the most recent posts from subreddit:  https://www.reddit.com/r/photo. By default the service will always scrape the 25 most recent posts, but is possible to increase this limit passing by parameter.
+This project uses the Reddit API to scrape the most recent posts from subreddit:  https://www.reddit.com/r/photo. By default the service will always scrape the 25 most recent posts, but is possible to increase this limit passing by parameter.
 
 
 
@@ -14,9 +14,9 @@ This project use the Reddit API to scrape the most recent posts from subreddit: 
 
 
 ## Backend 
-The backend was built using nodeJS, express and sequelize ORM to use sqlite3.
+The backend using nodeJS, express and sequelize ORM to use sqlite3.
 
-> To make testing and using the application easier, I built the frontent project and put it to be served by the backend server. That way you won't need to start the two services (frontnd and backend) to be able to test. Just follow the backend instructions and open the url shown in the terminal (http://localhost:8000)
+> To turn the application test easier, I compiled the frontent project and put it to be served by the backend server. That way you won't need to start the two services (frontnd and backend) to be able to test. Just follow the backend instructions and open the url shown in the terminal (http://localhost:8000)
 
 ### Start project Instructions:
 
@@ -36,8 +36,8 @@ Working directory
 
 | url | context | description
 |--|--|--| 
-| http://localhost:8000/app		| app | web app  build in react running into backend server| 
-| http://localhost:8000/api/ 	| api | api documentation using swagger. use it to test the endpoits | 
+| http://localhost:8000/app		| app | web app running into backend server| 
+| http://localhost:8000/api/ 	| api | api documentation using swagger. Use it to test the endpoits | 
 
 
  
@@ -48,7 +48,7 @@ Working directory
 ___
 
 ## Frontend
-The frontend was build using ReactJS and Tailwindcss
+The frontend using ReactJS and Tailwindcss
 
 
 Working directory
