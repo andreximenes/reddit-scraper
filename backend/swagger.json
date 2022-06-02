@@ -35,7 +35,7 @@
     "/posts/scrape": {
       "get": {
         "tags": ["Posts"],
-        "summary": "starts the process to fetch the 25 (by default) most recent posts on the subreddit. If the limit parameter is passed with some other value, it will be used as a post search limit",
+        "summary": "Starts the process to fetch the 25 most recent posts on the subreddit. If the limit parameter is passed with some other value, it will be used as a post search limit",
         "parameters": [
           {
             "name": "limit",
@@ -46,6 +46,17 @@
             }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/posts/reset": {
+      "get": {
+        "tags": ["Posts"],
+        "summary": "remove all posts and image from database. This endpoint was created to keep test process more simple",
         "responses": {
           "200": {
             "description": "OK"

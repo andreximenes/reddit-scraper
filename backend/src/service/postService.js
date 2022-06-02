@@ -2,6 +2,8 @@ const { Post , PostImage}  = require('../model/models')
 const scrapeService = require('./scrapeService')
 const imageService = require('./imgDownloadService')
 const utils = require('../util/utils')
+const serverConstants = require('../serverConstants')
+const path = require("path");
 
 
 async function getAll() {
@@ -12,6 +14,13 @@ async function getAll() {
         post.setDataValue('images', await getPostImagesByPostId(post.id))
     }
     return posts
+}
+
+async function deleteAll() {
+    await PostImage.sync({ force: true })
+    await Post.sync({ force: true })
+    utils.deleteFolder(path.join(path.resolve('.'), 'public/images'))
+    return true
 }
 
 async function getPostImagesByPostId(postId){
@@ -69,7 +78,7 @@ async function scrapeAndSave(customLimit) {
             await PostImage.create({
                 postId: post.id,
                 name: image.name,
-                sourceUrl: `http://localhost:${process.env.PORT}${process.env.APPLICATION_CONTEXT}/public/images/${image.name}`
+                sourceUrl: `http://localhost:${process.env.PORT}${serverConstants.APPLICATION_CONTEXT}/public/images/${image.name}`
             }).catch((err) => {
                 console.error(err)
                 throw err
@@ -85,5 +94,6 @@ async function scrapeAndSave(customLimit) {
 
 module.exports = {
     getAll,
-    scrapeAndSave
+    scrapeAndSave,
+    deleteAll
 }

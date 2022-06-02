@@ -1,12 +1,15 @@
-getImgType = (imgSrc) => {
-    if(imgSrc.includes('jpg') || imgSrc.includes('jpeg')) {
-        return 'jpg'
-    }
+const fs = require('fs')
 
-    if(imgSrc.includes('png')) {
-        return 'png'
-    }
-
+function exsistsFolder(path) {
+    return fs.existsSync(path)
 }
 
-module.exports = { getImgType }
+const createFolder = (path) => {
+    return fs.mkdirSync(path)
+}
+
+const deleteFolder = (path) => {
+    return fs.rmSync(path, { recursive: true, force: true })
+}
+
+module.exports = { exsistsFolder, createFolder, deleteFolder }

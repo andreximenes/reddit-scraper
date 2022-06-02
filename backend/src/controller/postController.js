@@ -5,6 +5,11 @@ async function getAll(req, res) {
     res.json({ data: posts} )
 }
 
+async function deleteAll(req, res) {
+    await postService.deleteAll()
+    res.json({ message: 'all data scraped are excluded'} )
+}
+
 async function newScrape(req, res) {
     const customLimit = req.query.limit
 
@@ -14,5 +19,6 @@ async function newScrape(req, res) {
 
 module.exports = {
     getAll,
-    newScrape
+    newScrape,
+    deleteAll
 }

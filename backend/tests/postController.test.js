@@ -8,8 +8,8 @@ chai.use(chaiHttp);
 
 const server = require('../src/server')
 
-describe('Checking if server is running', () => {
-  it('Returns a 200 response', (done) => {
+describe('Start testing...', () => {
+  it('Checking if server is running. It should returns a 200 response', (done) => {
     chai.request(server)
       .get('/')
       .end((error, response) => {
@@ -31,7 +31,7 @@ describe('Checking if server is running', () => {
       });
   });
 
-  it('Get all posts ', (done) => {
+  it('Get all posts. It should returns a 200 response', (done) => {
     chai.request(server)
       .get('/api/v1/posts/all')
       .end((error, response) => {

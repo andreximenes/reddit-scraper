@@ -6,7 +6,7 @@ function errorHandler (err, req, res, next) {
         res.status(500).json({ message: "Something looks wrong :( !!!" });
 }
 
-function createErroNotFound(req, res, next)  {
+function createErrorNotFound(req, res, next)  {
     let err = new Error('Not Found');
     err.status = 404;
     next(err);
@@ -15,5 +15,5 @@ function createErroNotFound(req, res, next)  {
 
 module.exports = {
     errorHandler,
-    createErroNotFound
+    createErrorNotFound
 }
