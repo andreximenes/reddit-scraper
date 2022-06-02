@@ -16,7 +16,7 @@ This project uses the Reddit API to scrape the most recent posts from subreddit:
 ## Backend 
 The backend using nodeJS, express and sequelize ORM to use sqlite3.
 
-> To turn the application test easier, I compiled the frontent project and put it to be served by the backend server. That way you won't need to start the two services (frontnd and backend) to be able to test. Just follow the backend instructions and open the url shown in the terminal (http://localhost:8000)
+> To turn the application test easier, I compiled the frontent project and put it to be served by the backend server. That way we won't need to start the two services (frontnd and backend) to be able to test. Just follow the backend instructions and open the url shown in the terminal (http://localhost:8000)
 
 ### Start project Instructions:
 
