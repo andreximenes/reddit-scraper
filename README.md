@@ -32,18 +32,18 @@ Working directory
 
     npm start
 
-3 - Access the API documentation  (sawagger) 
+3 - Application context
 
 | url | context | description
 |--|--|--| 
 | http://localhost:8000/app		| app | web app  build in react running into backend server| 
-| http://localhost:8000/api/ 	| api | api documentation using swagger | 
+| http://localhost:8000/api/ 	| api | api documentation using swagger. use it to test the endpoits | 
 
 
  
  
 **Important**
-> *For security reasons we shouldn't commit the .env file with sensitive data in the github repository, but I had to commit it so that it is possible to run the project as expected, because the Reddit API credentials are in the .env file*
+> *For security reasons we shouldn't commit the **.env** file with sensitive data in the github repository, but I had to break this rule and commit it so that it is possible to run the project as expected, as the Reddit API credentials are in the **.env** file. In a real situation I would never do that.*
 
 ___
 
