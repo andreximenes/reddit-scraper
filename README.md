@@ -1,6 +1,8 @@
 # Welcome to Reddit Scraper!
 
-This project uses the Reddit API to scrape the most recent posts from subreddit:  https://www.reddit.com/r/photo. By default the service will always scrape the 25 most recent posts, but is possible to increase this limit passing by parameter.
+This project was a technical challenge I did for the Dutch company Spark.
+
+Its uses the Reddit API to scrape the most recent posts from subreddit:  https://www.reddit.com/r/photo. By default the service will always scrape the 25 most recent posts, but is possible to increase this limit passing by parameter.
 
 
 
